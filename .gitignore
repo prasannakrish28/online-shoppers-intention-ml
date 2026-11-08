@@ -5,3 +5,11 @@ __pycache__/
 .vscode/
 .idea/
 
+# Local report and PDF generation artifacts
+*.pdf
+*.html
+generate_html.py
+train_and_evaluate.py
+SUBMISSION_REPORT.md
+vlab_*.jpg
+vlab_*.png

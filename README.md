@@ -71,20 +71,18 @@ The models and preprocessing pipelines are persisted using `joblib` and served t
 ```text
 online-shoppers-intention-ml/
 ├── app.py                         # Interactive Streamlit application frontend
-├── requirements.txt               # Python dependency specification
+├── requirements.txt               # Python package dependencies
 ├── README.md                      # Project documentation and benchmark report
-├── SUBMISSION_REPORT.md           # Assignment submission report
 ├── test_data.csv                  # Held-out test split (2,466 instances)
 ├── test_sample.csv                # Sample test partition (500 instances)
-├── train_and_evaluate.py          # Root execution helper script
 ├── .streamlit/
 │   └── config.toml                # Streamlit server and theme configuration
 └── model/                         # Model artifacts and training code
     ├── train_models.py            # Python script for model training and evaluation
     ├── train_models.ipynb         # Jupyter Notebook version of the pipeline
-    ├── logistic_regression.joblib # Serialized Logistic Regression pipeline
     ├── decision_tree.joblib       # Serialized Decision Tree pipeline
     ├── knn.joblib                 # Serialized K-Nearest Neighbor pipeline
+    ├── logistic_regression.joblib # Serialized Logistic Regression pipeline
     ├── naive_bayes.joblib         # Serialized Gaussian Naive Bayes pipeline
     ├── svm.joblib                 # Serialized Support Vector Machine pipeline
     └── metrics_summary.json       # Compiled evaluation metrics across all 5 models
