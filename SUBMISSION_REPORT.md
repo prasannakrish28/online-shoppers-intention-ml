@@ -13,7 +13,7 @@
 # 1. Mandatory Submission Links
 
 ### 1. GitHub Repository Link
-- **URL**: `https://github.com/<YOUR_GITHUB_USERNAME>/online-shoppers-intention-ml`  
+- **URL**: `https://github.com/prasannakrish28/online-shoppers-intention-ml`  
   *(Contains complete source code, `requirements.txt`, `README.md`, `test_data.csv`, and `model/` directory with saved `.joblib` pipelines and Jupyter notebook)*
 
 ### 2. Live Streamlit Application Link
@@ -176,5 +176,4 @@ The deployed Streamlit application fulfills all assignment UI specifications:
 - [x] **Dataset Criteria Met**: Online Shoppers Purchasing Intention (12,330 instances $\ge 500$, 17 features $\ge 12$).
 - [x] **README.md Structure Complete**: All required sections (a, b, c, d, observations, winner) fully documented.
 - [x] **BITS Virtual Lab Screenshot**: Ready for insertion in Section 2 of this submission PDF.
-EOF
 

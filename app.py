@@ -473,5 +473,4 @@ with tab_about:
     - Categorical variables (`Month`, `VisitorType`, etc.) are encoded using `OneHotEncoder(handle_unknown='ignore')`.
     - The preprocessing transform and classifier are coupled into a unified `Pipeline`, persisted with `joblib`.
     """)
-EOF
 

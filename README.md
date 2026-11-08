@@ -58,7 +58,7 @@ Because purchasing visitors represent a minority class (~15.5%) compared to casu
 
 ## c. GitHub Repository Link
 
-- **GitHub Repository**: `[https://github.com/<YOUR_GITHUB_USERNAME>/online-shoppers-intention-ml](https://github.com/<YOUR_GITHUB_USERNAME>/online-shoppers-intention-ml)`
+- **GitHub Repository**: `https://github.com/prasannakrish28/online-shoppers-intention-ml`
 - **Live Streamlit App**: `[https://<YOUR_APP_SUBDOMAIN>.streamlit.app](https://<YOUR_APP_SUBDOMAIN>.streamlit.app)`
 
 *(Note: Replace `<YOUR_GITHUB_USERNAME>` and `<YOUR_APP_SUBDOMAIN>` with your personal GitHub handle and Streamlit Community Cloud URL upon deployment)*
@@ -163,5 +163,4 @@ python model/train_models.py
 # 4. Launch Streamlit web application
 streamlit run app.py
 ```
-EOF
 
