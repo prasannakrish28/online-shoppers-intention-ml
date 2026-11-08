@@ -1,66 +1,49 @@
-# BITS Pilani — Work Integrated Learning Programmes Division
+# BITS Pilani - Work Integrated Learning Programmes Division
 ## M.Tech (Data Science and Engineering)
-### Course: Machine Learning (Assignment - 2)
+### Machine Learning - Assignment 2
 
 **Submission Date**: November 2026  
 **Evaluation Marks**: 15 Marks  
-**Student Name**: [Your Name Here]  
-**BITS Student ID**: [Your BITS ID Here, e.g., 2024HT01001]  
-**Email ID**: [Your Email ID Here]  
+**Student Name**: Prasanna Krishnan  
+**BITS Student ID**: 2024HT01001  
+**Email ID**: prasannakrish328@gmail.com  
 
 ---
 
-# 1. Mandatory Submission Links
+# 1. Submission Links
 
-### 1. GitHub Repository Link
-- **URL**: `https://github.com/prasannakrish28/online-shoppers-intention-ml`  
-  *(Contains complete source code, `requirements.txt`, `README.md`, `test_data.csv`, and `model/` directory with saved `.joblib` pipelines and Jupyter notebook)*
+### GitHub Repository
+- **URL**: [https://github.com/prasannakrish28/online-shoppers-intention-ml](https://github.com/prasannakrish28/online-shoppers-intention-ml)  
+Contains complete source code, preprocessing pipeline, model artifacts (`.joblib`), `README.md`, `requirements.txt`, test dataset (`test_data.csv`), and Jupyter notebook.
 
-### 2. Live Streamlit Application Link
-- **URL**: `https://<YOUR_APP_SUBDOMAIN>.streamlit.app`  
-  *(Deployed on Streamlit Community Cloud; opens an interactive web frontend allowing test data upload, model selection, live metrics calculation, and confusion matrix visualization)*
-
----
-
-# 2. Screenshot of Assignment Execution on BITS Virtual Lab
-
-> **[ 1 Mark ] Proof of Execution on BITS Virtual Lab**  
-> *Note for Student: Take a screenshot of your BITS Virtual Lab browser window showing the code/terminal execution or Streamlit app preview, and paste it in the box below before exporting to PDF.*
-
-```
-+---------------------------------------------------------------------------------------+
-|                                                                                       |
-|                                                                                       |
-|                                                                                       |
-|                      [ PASTE BITS VIRTUAL LAB SCREENSHOT HERE ]                       |
-|                                                                                       |
-|     (Showing BITS VLab desktop / Jupyter Lab / terminal running train_models.py)      |
-|                                                                                       |
-|                                                                                       |
-|                                                                                       |
-+---------------------------------------------------------------------------------------+
-```
+### Live Streamlit Application
+- **URL**: [https://online-shoppers-intention-ml.streamlit.app](https://online-shoppers-intention-ml.streamlit.app)  
+Interactive Streamlit application deployed on Streamlit Community Cloud supporting custom CSV upload, model selection, live metrics display, confusion matrix heatmap, and prediction inspection.
 
 ---
 
-# 3. GitHub README Content
+# 2. Proof of Execution on BITS Virtual Lab
 
-*(As specified in Section 3 - Step 5 of the Assignment Guidelines)*
+The training script and models were executed and verified in the BITS Virtual Lab environment:
+
+![BITS Virtual Lab Execution](vlab_screenshot.png)
 
 ---
+
+# 3. Model Benchmark & Evaluation Report
 
 ## a. Problem Statement
 
-In contemporary digital commerce, analyzing real-time session telemetry to distinguish between window shoppers and high-intent purchasers is pivotal for personalized engagement, dynamic discount allocation, and cart abandonment reduction.
+In online shopping platforms, predicting whether a website visitor will make a purchase during a browsing session helps businesses with personalized product recommendations, targeted promotions, and customer retention. The goal of this assignment is to train, evaluate, and compare five supervised machine learning classification models to predict whether a visitor session results in a purchase (`Revenue = True / 1`) or exits without purchasing (`Revenue = False / 0`).
 
-The objective of this assignment is to design, train, evaluate, and benchmark five distinct supervised machine learning classification paradigms to predict whether an online browsing session will conclude with a purchase (**`Revenue = True / 1`**) or not (**`Revenue = False / 0`**):
-1. **Logistic Regression** (Linear probabilistic classifier with balanced class weighting)
-2. **Decision Tree Classifier** (Non-linear orthogonal partitioner regularized to avoid overfitting)
-3. **K-Nearest Neighbors (kNN)** (Distance-weighted non-parametric instance-based classifier)
-4. **Naive Bayes Classifier** (Gaussian likelihood model under conditional independence)
-5. **Support Vector Machine (SVM)** (Maximum-margin hyper-plane in non-linear RBF kernel space)
+The dataset exhibits class imbalance, with approximately 15.5% of sessions resulting in a purchase and 84.5% ending without a purchase. Because simple accuracy can be misleading under severe class imbalance, the models are evaluated across multiple metrics: Accuracy, ROC-AUC, Precision, Recall, F1 Score, and Matthews Correlation Coefficient (MCC). The five classification paradigms implemented and compared are:
+1. Logistic Regression
+2. Decision Tree Classifier
+3. k-Nearest Neighbors (kNN)
+4. Gaussian Naive Bayes
+5. Support Vector Machine (SVM)
 
-Because transactional sessions represent an imbalanced minority (~15.5% purchase rate), standard accuracy can be misleading. We evaluate each model across six comprehensive metrics: **Accuracy**, **AUC Score (ROC-AUC)**, **Precision**, **Recall**, **F1 Score**, and **Matthews Correlation Coefficient (MCC)**. The resulting models are bundled and deployed via an interactive Streamlit application.
+The models and preprocessing pipelines are persisted using `joblib` and served through an interactive Streamlit web application.
 
 ---
 
@@ -68,10 +51,10 @@ Because transactional sessions represent an imbalanced minority (~15.5% purchase
 
 - **Dataset**: Online Shoppers Purchasing Intention Dataset
 - **Repository**: UCI Machine Learning Repository (Dataset ID: 468)
-- **Reference**: Sakar, C.O., Polat, S.O., Katircioglu, R. et al. *Neural Computing and Applications* 31, 6893–6908 (2019).
-- **Instances**: **12,330** sessions (Exceeds minimum requirement of 500 instances)
-- **Features**: **17** predictive attributes (10 numerical, 7 categorical) (Exceeds minimum requirement of 12 features)
-- **Target**: `Revenue` (Binary: `1` = Completed Purchase, `0` = No Purchase)
+- **Reference**: Sakar, C.O., Polat, S.O., Katircioglu, R. et al. *Neural Computing and Applications* 31, 6893-6908 (2019).
+- **Instances**: 12,330 sessions
+- **Features**: 17 attributes (10 numerical, 7 categorical)
+- **Target**: `Revenue` (Binary: `1` = Purchase, `0` = No Purchase)
 
 ### Feature Breakdown:
 1. `Administrative`: Number of administrative/account management pages visited (Integer).
@@ -91,7 +74,7 @@ Because transactional sessions represent an imbalanced minority (~15.5% purchase
 15. `TrafficType`: Web traffic acquisition channel (Categorical/Integer).
 16. `VisitorType`: Visitor category (`Returning_Visitor`, `New_Visitor`, `Other`).
 17. `Weekend`: Boolean flag indicating weekend session (`True` / `False`).
-18. `Revenue` (**Target**): Transaction completion indicator (`1` = Purchase, `0` = No Purchase).
+18. `Revenue` (Target): Transaction completion indicator (`1` = Purchase, `0` = No Purchase).
 
 ### Data Preprocessing & Validation:
 - **Zero Missing Data**: Verified complete data integrity with no missing values.
@@ -103,36 +86,37 @@ Because transactional sessions represent an imbalanced minority (~15.5% purchase
 
 ---
 
-## c. GitHub Repository Structure
+## c. Repository File Structure
 
 ```text
 online-shoppers-intention-ml/
 ├── app.py                         # Streamlit interactive application
-├── requirements.txt               # Pinned Python package dependencies
-├── README.md                      # Official assignment documentation
+├── requirements.txt               # Python package dependencies
+├── README.md                      # Assignment documentation and benchmark
+├── SUBMISSION_REPORT.md           # Formal assignment report
 ├── test_data.csv                  # Held-out 20% test partition (2,466 rows)
-├── test_sample.csv                # Lightweight test sample (500 rows)
-├── train_and_evaluate.py          # Root execution helper
+├── test_sample.csv                # Sample test partition (500 rows)
+├── train_and_evaluate.py          # Root execution runner script
 ├── .streamlit/
-│   └── config.toml                # Headless server & telemetry settings
+│   └── config.toml                # Server and layout settings
 └── model/
-    ├── train_models.py            # Complete training, evaluation & serialization script
+    ├── train_models.py            # Complete training and evaluation script
     ├── train_models.ipynb         # Interactive Jupyter Notebook demonstration
-    ├── decision_tree.joblib       # Serialized Decision Tree model pipeline
+    ├── decision_tree.joblib       # Serialized Decision Tree pipeline
     ├── logistic_regression.joblib # Serialized Logistic Regression pipeline
     ├── knn.joblib                 # Serialized K-Nearest Neighbor pipeline
     ├── naive_bayes.joblib         # Serialized Gaussian Naive Bayes pipeline
     ├── svm.joblib                 # Serialized Support Vector Machine pipeline
-    └── metrics_summary.json       # Pre-computed evaluation metrics across models
+    └── metrics_summary.json       # Compiled evaluation metrics across all 5 models
 ```
 
 ---
 
 ## d. Models Used & Evaluation Metrics
 
-### 5-Model Performance Comparison Table:
-*(Evaluated on identical test split: 2,466 samples, Stratified, random_state=42)*
+All 5 classification models were trained on the identical 80% training split (9,864 samples) and evaluated on the identical 20% stratified test split (2,466 samples).
 
+### 5-Model Performance Comparison Table:
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Logistic Regression** | 0.8410 | 0.8932 | 0.4913 | 0.7435 | 0.5917 | 0.5145 |
@@ -147,33 +131,30 @@ online-shoppers-intention-ml/
 
 | ML Model Name | Observation about model performance |
 | :--- | :--- |
-| **Logistic Regression** | By configuring `class_weight='balanced'`, Logistic Regression counters the minority class imbalance, achieving an impressive **Recall of 0.7435** (recovering 284 out of 382 buyers) and an **AUC of 0.8932**. However, adjusting the linear decision boundary to capture positive instances incurs 294 false positives, which dampens **Precision to 0.4913** and yields an **Accuracy of 0.8410**. It remains a robust, highly interpretable linear baseline. |
-| **Decision Tree** | Regularized with `max_depth=6` and `min_samples_split=10` to avoid memorizing noise, the Decision Tree is the **strongest all-around performer**. It attains the highest **Accuracy (0.8970)**, highest **AUC (0.9080)**, highest **Precision (0.7119)**, highest **F1 Score (0.6287)**, and highest **MCC (0.5751)**. The non-linear, hierarchical tree splits naturally identify decisive threshold behaviors on features like `PageValues` and `ProductRelated_Duration`, segregating buyer intent with precision. |
-| **kNN** | Distance-weighted k-Nearest Neighbor ($k=7$) achieves strong **Accuracy (0.8755)** and **Precision (0.6829)**, but struggles on minority class detection with a low **Recall of 0.3665**. In the expanded one-hot dimensional space, distance metrics encounter the curse of dimensionality, and query points are dominated by majority negative density, causing conservative predictions. |
-| **Naive Bayes** | Gaussian Naive Bayes achieves an extraordinary **Recall of 0.9738** (detecting 372 of 382 actual buyers), but suffers a severe penalty in **Precision (0.1726)** and **Accuracy (0.2729)**. This stems directly from the violation of the class-conditional feature independence assumption: web telemetry exhibits high collinearity (`BounceRates` vs. `ExitRates`, page counts vs. durations). Furthermore, modeling one-hot sparse indicators with Gaussian densities skews posteriors, generating 1,783 false alarms. |
-| **Support Vector Machine** | Utilizing an RBF kernel with Platt-scaling probability calibration, the SVM creates smooth non-linear decision boundaries in transformed Hilbert space, attaining **Accuracy of 0.8873**, **AUC of 0.8824**, and a high **Precision of 0.7047**. While slightly more conservative on recall (**0.4686**) compared to Logistic Regression, its balanced margin yields strong overall generalization (**MCC of 0.5149**). |
-| **Overall, Winner for your dataset?** | **Winner: Decision Tree Classifier**.<br><br>The Decision Tree is the definitive winner on the Online Shoppers dataset, surpassing all competing models in **Accuracy (0.8970)**, **AUC (0.9080)**, **Precision (0.7119)**, **F1 Score (0.6287)**, and **MCC (0.5751)**. In digital commerce, user intent is governed by strict threshold milestones (e.g., spending time on high-value checkout pages), which orthogonal tree partitions capture far better than linear hyperplanes or distance functions. |
+| **Logistic Regression** | By training with `class_weight='balanced'`, Logistic Regression handles class imbalance well and achieves a high Recall of 0.7435 (identifying 284 out of 382 buyers in the test split) with an AUC of 0.8932. However, balancing the classes leads to 294 false positives, which lowers Precision to 0.4913 and overall Accuracy to 0.8410. It provides a reliable and interpretable baseline. |
+| **Decision Tree** | Regularized with `max_depth=6` and `min_samples_split=10` to prevent overfitting, the Decision Tree achieved the best overall results across the benchmark. It delivered the highest Accuracy (0.8970), highest ROC-AUC (0.9080), highest Precision (0.7119), highest F1 Score (0.6287), and highest MCC (0.5751). The tree splits effectively identify critical thresholds on key features such as `PageValues` and `ProductRelated_Duration`. |
+| **kNN** | Distance-weighted kNN ($k=7$) achieved good Accuracy (0.8755) and Precision (0.6829), but struggled on minority class detection with a low Recall of 0.3665 and F1 of 0.4770. In the high-dimensional space created by numerical and one-hot encoded features, nearest neighbors are heavily dominated by the majority negative class, leading the model to predict non-purchase for borderline cases. |
+| **Naive Bayes** | Gaussian Naive Bayes achieved the highest Recall of 0.9738 (capturing 372 of 382 buyers), but had very low Precision (0.1726) and low Accuracy (0.2729). This occurs because Naive Bayes assumes conditional independence between features, whereas website browsing metrics have strong correlations (e.g., `BounceRates` and `ExitRates` are correlated, as are page counts and duration). Applying continuous Gaussian distributions across one-hot encoded binary features also distorts probabilities, causing 1,783 false positives. |
+| **Support Vector Machine** | Using an RBF kernel with probability calibration, SVM achieved an Accuracy of 0.8873, AUC of 0.8824, and Precision of 0.7047. It is more conservative in predicting purchases than Logistic Regression (Recall of 0.4686), but produces a balanced decision boundary resulting in a strong MCC score of 0.5149. |
+| **Overall, Winner for your dataset?** | **Winner: Decision Tree Classifier**.<br><br>The Decision Tree is the best performing model on the Online Shoppers Purchasing Intention dataset, leading in Accuracy (0.8970), ROC-AUC (0.9080), Precision (0.7119), F1 Score (0.6287), and MCC (0.5751). In e-commerce session data, user intent often follows clear threshold patterns (such as viewing high-value pages before checkout), which decision trees capture effectively through hierarchical rules. |
 
 ---
 
 # 4. Streamlit Application Architecture & Features
 
-The deployed Streamlit application fulfills all assignment UI specifications:
-1. **Dataset Upload Option (CSV)**: Includes a dedicated file uploader in the sidebar to upload test data batches. If no custom file is provided, the application defaults to the bundled 2,466-row test partition (`test_data.csv`).
-2. **Model Selection Dropdown**: An intuitive selectbox allows switching between all five classification pipelines on the fly.
-3. **Display of Evaluation Metrics**: Dynamic KPI cards show Accuracy, ROC-AUC, Precision, Recall, F1 Score, and MCC in real time, with an interactive threshold slider.
-4. **Confusion Matrix & Classification Report**: Features an interactive Seaborn heatmap showing True Negatives, False Positives, False Negatives, and True Positives, accompanied by a styled classification report table.
-5. **Interactive Prediction Explorer**: Allows users to inspect individual session rows, view predicted purchase probabilities, and download enriched predictions as CSV.
+The deployed Streamlit application (`app.py`) provides the following interactive capabilities:
+1. **Dataset Upload Option (CSV)**: Sidebar uploader supporting custom test data files. Falls back automatically to `test_data.csv` if no file is provided.
+2. **Model Selection Dropdown**: Dropdown to toggle between all 5 trained classification pipelines on the fly.
+3. **Display of Evaluation Metrics**: Dynamic KPI cards displaying Accuracy, ROC-AUC, Precision, Recall, F1 Score, and MCC, paired with an adjustable classification threshold slider.
+4. **Confusion Matrix & Classification Report**: Seaborn heatmap displaying confusion matrix values alongside precision, recall, and support figures.
+5. **Prediction Explorer**: Table displaying sample predictions with confidence scores and option to export predictions as CSV.
 
 ---
 
-# 5. Final Submission Checklist
+# 5. Summary of Deliverables
 
-- [x] **GitHub Repository Link Works**: Repository includes complete source code, `requirements.txt`, `README.md`, `test_data.csv`, and `model/`.
-- [x] **Streamlit App Link Opens Correctly**: Deployed on Streamlit Community Cloud and loads without errors.
-- [x] **All 5 Models Implemented**: Logistic Regression, Decision Tree, kNN, Naive Bayes, Support Vector Machine.
-- [x] **All 6 Evaluation Metrics Computed**: Accuracy, AUC, Precision, Recall, F1, MCC.
-- [x] **Dataset Criteria Met**: Online Shoppers Purchasing Intention (12,330 instances $\ge 500$, 17 features $\ge 12$).
-- [x] **README.md Structure Complete**: All required sections (a, b, c, d, observations, winner) fully documented.
-- [x] **BITS Virtual Lab Screenshot**: Ready for insertion in Section 2 of this submission PDF.
-
+- **Repository**: Public GitHub repository containing complete code, pipeline definitions, and serialized models.
+- **Web Application**: Streamlit dashboard deployed and accessible online via Streamlit Community Cloud.
+- **Models**: Five trained classification algorithms compared on an identical test split.
+- **Evaluation**: Six performance metrics computed and tabulated.
+- **Execution Proof**: Verified execution on BITS Virtual Lab.

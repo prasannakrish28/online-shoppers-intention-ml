@@ -32,8 +32,7 @@ from sklearn.metrics import (
 # Page Configuration
 # ---------------------------------------------------------
 st.set_page_config(
-    page_title="Online Shoppers Purchasing Intention | ML Classifier Benchmark",
-    page_icon="🛒",
+    page_title="Online Shoppers Purchasing Intention - ML Classification",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -133,9 +132,9 @@ def load_metrics_summary():
 # ---------------------------------------------------------
 # Application Header
 # ---------------------------------------------------------
-st.markdown('<div class="main-title">🛒 Online Shoppers Purchasing Intention</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">Online Shoppers Purchasing Intention</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="sub-title">BITS Pilani M.Tech (DSE) Machine Learning — Assignment 2 Benchmark Dashboard</div>',
+    '<div class="sub-title">BITS Pilani M.Tech (DSE) Machine Learning - Assignment 2 Benchmark Dashboard</div>',
     unsafe_allow_html=True
 )
 
@@ -143,26 +142,26 @@ st.markdown(
 # Sidebar Controls
 # ---------------------------------------------------------
 with st.sidebar:
-    st.header("⚙️ Experiment Controls")
+    st.header("Settings")
     
-    # 1. Dataset Upload Option (CSV) - Rubric Requirement (a)
-    st.subheader("1. Test Dataset")
+    # Dataset input
+    st.subheader("Test Dataset")
     uploaded_file = st.file_uploader(
         "Upload Test Data (CSV)",
         type=["csv"],
         help="Upload held-out test data. If left blank, the bundled UCI test partition is utilized automatically."
     )
     
-    # 2. Model Selection Dropdown - Rubric Requirement (b)
-    st.subheader("2. Model Selection")
+    # Model selection
+    st.subheader("Model Selection")
     selected_model_name = st.selectbox(
         "Choose Classification Model:",
         options=list(MODEL_FILES.keys()),
         index=0,
-        help="Select any of the 5 implemented scikit-learn models to inspect predictions and metrics."
+        help="Select any of the 5 trained models to evaluate predictions and metrics."
     )
     
-    # Optional decision threshold adjuster
+    # Decision threshold adjuster
     threshold = st.slider(
         "Decision Threshold (Probability)",
         min_value=0.1,
@@ -173,10 +172,12 @@ with st.sidebar:
     )
     
     st.markdown("---")
-    st.caption("📌 **Dataset**: UCI Online Shoppers Purchasing Intention\n\n"
-               "📌 **Target**: `Revenue` (1: Purchase, 0: No Purchase)\n\n"
-               "📌 **Total Features**: 17 (10 numerical, 7 categorical)\n\n"
-               "📌 **Institution**: BITS Pilani WILP (M.Tech DSE)")
+    st.caption(
+        "**Dataset**: UCI Online Shoppers Purchasing Intention\n\n"
+        "**Target**: `Revenue` (1: Purchase, 0: No Purchase)\n\n"
+        "**Features**: 17 (10 numerical, 7 categorical)\n\n"
+        "**Course**: BITS Pilani WILP (M.Tech DSE)"
+    )
 
 # ---------------------------------------------------------
 # Data Preparation
@@ -200,7 +201,7 @@ if data_df is None or data_df.empty:
 has_target = TARGET_COLUMN in data_df.columns
 missing_features = [col for col in FEATURE_COLUMNS if col not in data_df.columns]
 if missing_features:
-    st.warning(f"⚠️ Note: Uploaded data is missing expected feature columns: {missing_features}. Inference may be impacted.")
+    st.warning(f"Note: Uploaded data is missing expected feature columns: {missing_features}. Inference may be impacted.")
 
 X_eval = data_df[[c for c in FEATURE_COLUMNS if c in data_df.columns]]
 y_true = data_df[TARGET_COLUMN].astype(int) if has_target else None
@@ -250,10 +251,10 @@ else:
     report = None
 
 # ---------------------------------------------------------
-# Main View: Evaluation Metrics - Rubric Requirement (c)
+# Evaluation Metrics Display
 # ---------------------------------------------------------
-st.markdown(f"### 📊 Evaluation Metrics: `{selected_model_name}`")
-st.caption(f"Evaluated on: **{data_source_label}** — {len(data_df):,} instances | Decision Threshold = `{threshold:.2f}`")
+st.markdown(f"### Evaluation Metrics: `{selected_model_name}`")
+st.caption(f"Evaluated on: **{data_source_label}** - {len(data_df):,} instances | Decision Threshold = `{threshold:.2f}`")
 
 if metrics:
     c1, c2, c3, c4, c5, c6 = st.columns(6)
@@ -309,14 +310,14 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Tabbed Analysis: Confusion Matrix, Report, Data & Benchmark
 # ---------------------------------------------------------
 tab_eval, tab_inspect, tab_benchmark, tab_about = st.tabs([
-    "📈 Confusion Matrix & Report",
-    "🔍 Sample Predictions",
-    "🏆 5-Model Benchmark Table",
-    "ℹ️ Dataset & Methodology"
+    "Confusion Matrix & Report",
+    "Sample Predictions",
+    "Model Benchmark Comparison",
+    "Dataset & Methodology"
 ])
 
 # ---------------------------------------------------------
-# Tab 1: Confusion Matrix & Classification Report - Rubric Requirement (d)
+# Tab 1: Confusion Matrix & Classification Report
 # ---------------------------------------------------------
 with tab_eval:
     if cm is not None and report is not None:
@@ -392,17 +393,17 @@ with tab_inspect:
     
     st.dataframe(inspect_df.head(100), use_container_width=True)
     
-    # Download enriched predictions
+    # Download predictions
     csv_bytes = inspect_df.to_csv(index=False).encode('utf-8')
     st.download_button(
-        label="📥 Download Full Predictions CSV",
+        label="Download Predictions (CSV)",
         data=csv_bytes,
         file_name=f"predictions_{selected_model_name.lower().replace(' ', '_')}.csv",
         mime="text/csv"
     )
 
 # ---------------------------------------------------------
-# Tab 3: 5-Model Benchmark Comparison Table
+# Tab 3: Model Benchmark Comparison Table
 # ---------------------------------------------------------
 with tab_benchmark:
     st.subheader("Comparative Performance Across All 5 ML Models")
@@ -433,14 +434,14 @@ with tab_benchmark:
         )
         
         st.success(
-            "🏆 **Winner Model: Decision Tree Classifier**\n\n"
-            "- **Accuracy**: 0.8970 (Highest)\n"
-            "- **AUC**: 0.9080 (Highest)\n"
-            "- **Precision**: 0.7119 (Highest)\n"
-            "- **F1 Score**: 0.6287 (Highest)\n"
-            "- **MCC**: 0.5751 (Highest)\n\n"
-            "The Decision Tree effectively captures hierarchical decision boundaries on features like `PageValues` "
-            "and `ProductRelated_Duration` without suffering from linear boundary limitations or class density distortion."
+            "**Best Performing Model: Decision Tree Classifier**\n\n"
+            "- **Accuracy**: 0.8970\n"
+            "- **AUC**: 0.9080\n"
+            "- **Precision**: 0.7119\n"
+            "- **F1 Score**: 0.6287\n"
+            "- **MCC**: 0.5751\n\n"
+            "The Decision Tree effectively captures hierarchical decision boundaries on features like PageValues "
+            "and ProductRelated_Duration without suffering from linear boundary limitations or class density distortion."
         )
     else:
         st.info("Metrics summary file not found. Run `train_models.py` to compile the comparative table.")
@@ -452,10 +453,10 @@ with tab_about:
     st.subheader("About the Dataset & Preprocessing Pipeline")
     st.markdown("""
     ### 1. Dataset Overview
-    - **Repository**: [UCI Machine Learning Repository — Online Shoppers Purchasing Intention](https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset)
+    - **Repository**: [UCI Machine Learning Repository - Online Shoppers Purchasing Intention](https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset)
     - **Total Instances**: 12,330 e-commerce browsing sessions
     - **Total Features**: 17 features (10 numerical, 7 categorical / boolean)
-    - **Target Variable**: `Revenue` (True / False) — indicates whether the user completed a purchase transaction.
+    - **Target Variable**: `Revenue` (True / False) - indicates whether the user completed a purchase transaction.
     - **Class Balance**: 84.5% non-purchasing sessions (`Revenue = False`), 15.5% purchasing sessions (`Revenue = True`).
     
     ### 2. Feature Definitions

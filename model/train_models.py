@@ -77,13 +77,8 @@ def build_preprocessor(numerical_features, categorical_features):
 
 def evaluate_model(model_name, pipeline, X_test, y_test):
     """
-    Computes all 6 assignment-mandated classification metrics:
-    1. Accuracy
-    2. AUC Score (ROC-AUC)
-    3. Precision
-    4. Recall
-    5. F1 Score
-    6. Matthews Correlation Coefficient (MCC Score)
+    Computes classification evaluation metrics:
+    Accuracy, ROC-AUC, Precision, Recall, F1 Score, Matthews Correlation Coefficient.
     """
     y_pred = pipeline.predict(X_test)
     
@@ -158,8 +153,7 @@ def main():
     test_df.head(500).to_csv(sample_csv_path, index=False)
     
     # 3. Model Definitions
-    # Notice: Each model is coupled with preprocessor in a clean Scikit-Learn Pipeline
-    # to avoid data leakage and enable seamless inference on unseen CSV inputs.
+    # Each model is encapsulated with the preprocessor in a Pipeline
     preprocessor = build_preprocessor(numerical_cols, categorical_cols)
     
     models = {
