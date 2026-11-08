@@ -24,9 +24,17 @@ Interactive Streamlit application deployed on Streamlit Community Cloud supporti
 
 # 2. Proof of Execution on BITS Virtual Lab
 
-The training script and models were executed and verified in the BITS Virtual Lab environment:
+The training pipeline and interactive application were executed and verified within the BITS Virtual Lab environment (session: `s2025ns04024` on `g3.prayogshala.bits-pilani.ac.in`).
 
-![BITS Virtual Lab Execution](vlab_screenshot.png)
+### Model Training & Evaluation in Virtual Lab Terminal
+Execution of `train_and_evaluate.py` showing training completion for all 5 classifiers and the generated performance comparison table:
+
+![BITS Virtual Lab Terminal Execution](vlab_terminal.jpg)
+
+### Streamlit Application Running on Virtual Lab Desktop
+Local preview of the interactive dashboard running on `localhost:8501` inside the Virtual Lab browser session:
+
+![BITS Virtual Lab Streamlit Dashboard](vlab_dashboard.jpg)
 
 ---
 
