@@ -17,7 +17,7 @@
 Contains complete source code, preprocessing pipeline, model artifacts (`.joblib`), `README.md`, `requirements.txt`, test dataset (`test_data.csv`), and Jupyter notebook.
 
 ### Live Streamlit Application
-- **URL**: [https://online-shoppers-intention-ml.streamlit.app](https://online-shoppers-intention-ml.streamlit.app)  
+- **URL**: [https://online-shoppers-intention-ml-lritcoieamyo3hft7sdeo5.streamlit.app](https://online-shoppers-intention-ml-lritcoieamyo3hft7sdeo5.streamlit.app)  
 Interactive Streamlit application deployed on Streamlit Community Cloud supporting custom CSV upload, model selection, live metrics display, confusion matrix heatmap, and prediction inspection.
 
 ---

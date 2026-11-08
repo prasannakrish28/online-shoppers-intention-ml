@@ -65,7 +65,7 @@ The models and preprocessing pipelines are persisted using `joblib` and served t
 ## c. Repository and Deployment Links
 
 - **GitHub Repository**: [https://github.com/prasannakrish28/online-shoppers-intention-ml](https://github.com/prasannakrish28/online-shoppers-intention-ml)
-- **Live Streamlit Application**: [https://online-shoppers-intention-ml.streamlit.app](https://online-shoppers-intention-ml.streamlit.app)
+- **Live Streamlit Application**: [https://online-shoppers-intention-ml-lritcoieamyo3hft7sdeo5.streamlit.app](https://online-shoppers-intention-ml-lritcoieamyo3hft7sdeo5.streamlit.app)
 
 ### Repository File Structure:
 ```text
