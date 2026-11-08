@@ -474,3 +474,4 @@ with tab_about:
     - The preprocessing transform and classifier are coupled into a unified `Pipeline`, persisted with `joblib`.
     """)
 EOF
+
